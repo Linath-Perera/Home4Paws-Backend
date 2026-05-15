@@ -11,7 +11,7 @@ app.use(cors());
 app.use('/api/pets', require('./routes/petRoutes'));
 
 mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("Databbased  Connected"))
+.then(() => console.log("Databased  Connected"))
 .catch(err => console.error("Conection error:", err));
 
 app.get('/', (req,res) => {
