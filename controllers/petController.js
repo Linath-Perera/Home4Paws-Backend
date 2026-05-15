@@ -20,3 +20,25 @@ exports.getAllPets = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+exports.updatePet = async (req, res) => {
+    try {
+        const updatedPet = await Pet.findByIdAndUpdate(
+            req.params.id, 
+            req.body, 
+            { new: true } 
+        );
+        res.status(200).json(updatedPet);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+exports.deletePet = async (req, res) => {
+    try {
+        await Pet.findByIdAndDelete(req.params.id);
+        res.status(200).json({ message: "Pet deleted successfully" });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
